@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  
+  db:
+    image: postgres:18
+    container_name: juicycheck-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: tpdev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: garfield66
+    ports:
+      - "5432:5432"
+    volumes:
+      - juicycheck_pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: juicycheck-api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://postgres:garfield66@db:5432/tpdev
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  juicycheck_pgdata:
