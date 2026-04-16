@@ -23,6 +23,8 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@thallesp/nestjs-better-auth": "^2.4.0",
+    "better-auth": "^1.6.5",
     "dotenv": "^17.4.1",
     "drizzle-orm": "^0.45.2",
     "pg": "^8.20.0",

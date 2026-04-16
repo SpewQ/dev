@@ -8,6 +8,13 @@
       "when": 1775795235930,
       "tag": "0000_large_lester",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1776352548493,
+      "tag": "0001_medical_big_bertha",
+      "breakpoints": true
     }
   ]
 }
