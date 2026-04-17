@@ -17,6 +17,10 @@ RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 
+# 👇 AJOUT ICI
+COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
+COPY --from=builder /app/src/lib/db ./src/lib/db
+
 EXPOSE 3000
 
 CMD ["node", "dist/main"]
